@@ -1,0 +1,28 @@
+[package]
+name = "actix-microservice"
+version = "0.1.0"
+edition = "2021"
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[dependencies]
+actix-web = "4.3.1"
+actix-web-opentelemetry = { version = "0.13.0" }
+opentelemetry = { version = "0.18.0", features = ["rt-tokio-current-thread"] }
+opentelemetry-otlp = { version = "0.11.0" }
+opentelemetry-prometheus = { version = "0.11.0", optional = true }
+serde = { version = "1.0.152", features = ["derive"] }
+serde_json = "1.0.93"
+tokio = { version = "1.26.0", features = ["rt-multi-thread"], optional = true }
+tracing = "0.1.37"
+tracing-opentelemetry = "0.18.0"
+tracing-subscriber = { version = "0.3.16", features = ["env-filter"] }
+
+[features]
+default = ["helloworld"]
+helloworld = ["dep:tokio"]
+metrics = ["actix-web-opentelemetry/metrics-prometheus", "dep:opentelemetry-prometheus"]
+
+[profile.release]
+opt-level = "s"
+strip = true
