@@ -1,0 +1,29 @@
+devops:
+  local:
+    path: noops
+
+package:
+  helm:
+    parameters:
+      dev:
+        ingress:
+          hosts:
+          - host: helloworldrs-dev.pygoscelis.demo
+            paths:
+            - path: /
+              pathType: Prefix
+          tls:
+          - hosts:
+            - helloworldrs-dev.pygoscelis.demo
+            secretName: helloworldrs-tls
+      qa:
+        ingress:
+          hosts:
+          - host: helloworldrs-qa.pygoscelis.demo
+            paths:
+            - path: /
+              pathType: Prefix
+          tls:
+          - hosts:
+            - helloworldrs-qa.pygoscelis.demo
+            secretName: helloworldrs-tls

@@ -1,0 +1,20 @@
+package:
+  helm:
+    chart: helm/chart
+  supported:
+    target-classes:
+      one-cluster: true
+      multi-cluster: true
+      active-standby: false
+    profile-classes:
+      canary: false
+      services-only: false
+  docker:
+    product:
+      dockerfile: docker/Dockerfile
+
+pipeline:
+  product:
+    ci: ./scripts/product-ci.sh
+    pr: ./scripts/product-ci.sh
+    cd: ./scripts/product-cd.sh
