@@ -1,0 +1,4 @@
+delivery:
+  register: ./scripts/register.sh
+  init: ./scripts/init.sh
+  generate: ./scripts/generate.sh

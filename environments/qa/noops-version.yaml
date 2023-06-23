@@ -1,0 +1,2 @@
+chart: oci://core.harbor.pygoscelis.demo/library/helloworldrs
+version: 2+0.1.1
